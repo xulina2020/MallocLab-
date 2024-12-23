@@ -327,7 +327,7 @@ void *mm_realloc(void *ptr, size_t size)
 {
     void *oldptr = ptr;
     void *newptr;
-    size_t copySize;
+    //size_t copySize;
 
     if (!size)
     {
@@ -343,7 +343,7 @@ void *mm_realloc(void *ptr, size_t size)
     //copySize = *(size_t *)((char *)oldptr - SIZE_T_SIZE);
     //if (size < copySize)
       //copySize = size;
-    size_t copy_size = MIN(size,GET_VALID_SIZE(ptr));
+    size_t copySize = MIN(size,GET_VALID_SIZE(oldptr));
     memcpy(newptr, oldptr, copySize);
     mm_free(oldptr);
     return newptr;
